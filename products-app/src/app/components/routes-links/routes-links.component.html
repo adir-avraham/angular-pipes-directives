@@ -1,0 +1,5 @@
+<!-- route : { path, component, isVisible?, name? } -->
+
+    <li class="nav-item" *ngFor="let route of routes">
+        <a class="nav-link" *ngIf="route.isVisible" routerLink="{{prefix}}{{route.path}}"> {{ route.title }} </a>
+    </li>

@@ -1,0 +1,36 @@
+<h1 class="text-center" >Products</h1>
+<div class="container">
+    <div class="row justify-content-center">
+    <input type="text" class="form-control col-lg-6 m-3" placeholder="search" [(ngModel)]="searchText" >
+    </div>
+    <div class="row justify-content-center">
+        <form class="form-inline" [formGroup]="categoriesForm">
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Seach by category: </label>
+            <select class="custom-select my-1 mr-sm-2" formControlName="category" (change)="onCategory()">
+              <option selected>Choose...</option>
+              <option>productName</option>
+              <option>unitPrice</option>
+              <option>unitsInStock</option>
+              <option>unitsOnOrder</option>
+            </select>
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Currency </label>
+            <select class="custom-select my-1 mr-sm-2" formControlName="currencyCat" (change)="onCuurency()">
+              <option selected>Choose...</option>
+              <option>EUR</option>
+              <option>ILS</option>
+            </select>
+          </form>
+        </div>
+    <div class="row col-lg-12 justify-content-center">
+        <div *ngFor="let p of products | search:searchText: category" class="card text-white bg-secondary m-3 col-lg-4" style="max-width: 18rem;">
+            <div class="card-header">{{p.productName}}</div>
+            <div class="card-body">
+              <h5 class="card-title">Price: {{p.unitPrice | currency: currencyCat}}</h5>
+              <p class="card-text">UnitsInStock: {{p.unitsInStock}}</p>
+              <p class="card-text">UnitsOnOrder: {{p.unitsOnOrder}}</p>
+            </div>
+          </div>
+    </div>
+</div>
+
+
