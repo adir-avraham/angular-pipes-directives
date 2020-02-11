@@ -9,7 +9,7 @@ export class RoutesLinksComponent implements OnInit {
     @Input() routes;
     @Input() prefix;
     constructor() {
-        console.log(this.routes)
+   
     }
 
     ngOnInit() {

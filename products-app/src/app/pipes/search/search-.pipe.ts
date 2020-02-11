@@ -6,7 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SearchPipe implements PipeTransform {
 
   transform(products: any, searchText: any, searchKey: any): any {
-    console.log("p rom pipe", products)
     if (!searchText) return products;
     if (!Array.isArray(products)) return [];
     if (searchKey === "productName") {

@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchPipe } from './pipes/search/search-.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CurrencyPipe } from './pipes/currency.pipe';
+import { CopyDirective } from './components/directives/copy.directive';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CurrencyPipe } from './pipes/currency.pipe';
     NavbarComponent,
     ProductsComponent,
     SearchPipe,
-    CurrencyPipe
+    CurrencyPipe,
+    CopyDirective
   ],
   imports: [
     BrowserModule,
