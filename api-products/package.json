@@ -6,11 +6,14 @@
     "nodemon": "nodemon --exec npm dev"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "express": "^4.15.2",
     "filesystem": "^1.0.1",
     "http": "0.0.0",
-    "jsonfile": "^3.0.0"
+    "jsonfile": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.1"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

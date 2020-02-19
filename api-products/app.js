@@ -1,12 +1,11 @@
-var express = require("express");
-
-var product = require("./routes/product");
-
-var cart = require("./routes/cart");
-var bodyParser = require('body-parser')
-
-var app = express();
-
+const express = require("express");
+const product = require("./routes/product");
+const cart = require("./routes/cart");
+const bodyParser = require('body-parser')
+const app = express();
+const register = require('./auth/register');
+const login = require('./auth/login');
+const mongoose = require('mongoose'); 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -20,6 +19,18 @@ app.use(function(req, res, next) {
     next();
 });
 
+const DB_CONNECTION = "mongodb://localhost/store"
+
+mongoose.connect(DB_CONNECTION, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}, ()=>{
+    console.log("Connected to DB")
+});
+
+
+app.use('/login', login);
+app.use('/register', register);
 app.use("/products", product);
 app.use("/cart", cart);
 
@@ -27,57 +38,6 @@ console.log("app loaded in appjs");
 
 
 module.exports = app;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

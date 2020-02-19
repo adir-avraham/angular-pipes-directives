@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
 
-  public productsUrl = 'http://localhost:3500/products';
+  public productsUrl = 'http://localhost:4000/products';
   
   constructor( private httpClient: HttpClient) { 
  

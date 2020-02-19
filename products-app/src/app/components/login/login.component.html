@@ -1,0 +1,54 @@
+<!-- Material form login -->
+<div class="container">
+    <div class="col-lg-5">
+
+        <div class="card">
+            
+            <h5 class="card-header info-color white-text text-center py-4">
+                <strong>{{ isLoginMode ? 'Login' : 'Register'}}</strong>
+            </h5>
+            
+            <!--Card content-->
+            <div class="card-body px-lg-5 pt-0">
+        
+                <!-- Form -->
+                <form class="text-center" style="color: #757575;" action="#!" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+        
+                    <!-- Email -->
+                    <div class="md-form">
+                        <input type="email" id="materialLoginFormEmail" class="form-control" 
+                        ngModel
+                        name="email">
+                        <label for="materialLoginFormEmail">E-mail</label>
+                    </div>
+                    
+                    <!-- Password -->
+                    <div class="md-form">
+                        <input type="password" id="materialLoginFormPassword" class="form-control" 
+                        ngModel
+                        name="password">
+                        <label for="materialLoginFormPassword">Password</label>
+                    </div>
+                    
+                    
+                    <!-- Sign in button -->
+                    <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">{{ isLoginMode ? 'Login' : 'Register'}}</button>
+                    
+                    <!-- Register -->
+                    <button class="btn btn-secondary" (click)="onSwitchMode()" type="button" > 
+                        <a>Switch to {{ isLoginMode ? 'Register' : 'Login'}}</a>
+                    </button>
+                    <div *ngIf="isLoading">
+                        <app-loader></app-loader>
+                    </div>
+                    
+        
+    </form>
+    <!-- Form -->
+    
+</div>
+
+</div>
+<!-- Material form login -->
+</div>
+</div>

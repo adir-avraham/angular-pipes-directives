@@ -10,6 +10,8 @@ import { SearchPipe } from './pipes/search/search-.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CurrencyPipe } from './pipes/currency.pipe';
 import { CopyDirective } from './components/directives/copy.directive';
+import { LoginComponent } from './components/login/login.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { CopyDirective } from './components/directives/copy.directive';
     ProductsComponent,
     SearchPipe,
     CurrencyPipe,
-    CopyDirective
+    CopyDirective,
+    LoginComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
