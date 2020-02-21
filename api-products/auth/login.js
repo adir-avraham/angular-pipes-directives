@@ -4,20 +4,19 @@ router = express.Router();
 const User = require('../models/User');
 
 //console.log(email, bcrypt.hashSync(password))
-
+const salt = "$2a$10$qCXcfmmtBfILBCp7Ly0EHe";
+var jwt = require('jsonwebtoken');
 
 router.post('/', async (req, res) => {
     const { email, password } = req.body;
-    //console.log(email, password)
+    
     try{
-        const foundUser = await User.findOne({email: email, password: password});
-        //console.log(foundUser);
+        const foundUser = await User.findOne({email: email, password: bcrypt.hashSync(password, salt)});
         if (!foundUser) return res.json({message: "Incorrect password/username", status: false});
-        //const jwtToken = await getJwt(...foundUser);
-        //console.log(jwtToken)
-        res.json({message: "User logged in", user: foundUser, status: true});  
-    } catch {
-        res.json({error: "error from login", status: false});
+        const jwtToken = await getJwt({...foundUser});
+        res.json({message: "User logged in", user: foundUser, token: jwtToken, status: true});  
+    } catch (err){
+        res.json({message: err.message, status: false});
 
     }
 
@@ -29,8 +28,9 @@ module.exports = router;
 
 
 function getJwt(p) {
+    console.log("p=>", p)
     return new Promise((resolve, reject) => {
-        jwt.sign(p, { expiresIn: '3h' }, (err, token) => {
+        jwt.sign(p, "abcd" ,{ expiresIn: '3h' }, (err, token) => {
             if (err) reject("error");
             resolve(token);
         })

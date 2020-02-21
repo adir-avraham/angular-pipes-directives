@@ -27,7 +27,10 @@ export class LoginComponent implements OnInit {
     if ( this.isLoginMode) {
       this.authService.login(email, password).subscribe(
         (resData: any) => {
-          console.log(resData)
+          const { token } = resData;
+          console.log(token)
+          
+          localStorage.setItem('token', token);
           this.isLoading = false;
           if (resData.status) form.reset();
         }, error => {
@@ -39,7 +42,7 @@ export class LoginComponent implements OnInit {
   
       this.authService.register(email, password).subscribe(
         (resData: any) => {
-          console.log(resData)
+
           this.isLoading = false;
           if (resData.status) form.reset();
         }, error => {

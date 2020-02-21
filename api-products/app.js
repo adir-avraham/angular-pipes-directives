@@ -6,10 +6,14 @@ const app = express();
 const register = require('./auth/register');
 const login = require('./auth/login');
 const mongoose = require('mongoose'); 
+const cors = require('cors');
+
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
+app.use(cors());
 app.use(bodyParser.json())
 
 app.use(function(req, res, next) {

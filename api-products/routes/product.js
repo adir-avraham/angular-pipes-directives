@@ -1,8 +1,31 @@
 //expoeres withe express
-var express = require("express");
-var router = express.Router();
-var products = require("./../models/Product");
-router.get("/", function(req, res, next) {
+const express = require("express");
+const router = express.Router();
+const products = require("./../models/Product");
+const verifyToken = require('../auth/verifyToken');
+
+
+const jwt = require("jsonwebtoken");
+
+
+router.use('/', (req, res, next) =>{
+    console.log(req.headers)
+    try {
+        const { authorization } = req.headers;
+        if (!authorization) return res.json({message: "Verification failed", status: false});
+        jwt.verify(authorization, "abcd", (err, decoded) =>{
+            if (err) return res.json({message: "Verification failed", status: false});
+            req.decoded = decoded;
+            next()
+        });
+    } catch {
+        res.json({ error: "error from verification", status: false })
+    }
+  });
+
+  
+router.get("/", (req, res, next)=> {
+    
     res.send(products);
 
 })
@@ -17,7 +40,7 @@ router.get("/getProduct/:id", (req, res, next) => {
 
 router.post("/product", (req, res, next) => {
     let product;
-
+ 
     if (req.body) {
         product = req.body;
         product.productId = Math.floor(Math.random() * 1000) + 1
