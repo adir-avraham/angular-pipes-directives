@@ -1,1 +1,15 @@
 <h1 class="text-center">TASKS - PAGE</h1>
+
+
+    <div class="container">
+        <div class="row col-lg-12">
+
+            <select class="browser-default custom-select col-lg-3 mr-2">
+                <option selected>Select developer</option>
+                <option *ngFor="let developer of developers" value={{developer.name}}>{{developer.name}}</option>
+            </select>
+            
+            <input class="form-control form-control-lg col-lg-4 mr-2" type="text" placeholder="Enter task..">
+            <button class="btn btn-primary" type="button">SAVE</button>
+        </div>
+    </div>

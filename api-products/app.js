@@ -8,6 +8,7 @@ const login = require('./auth/login');
 const mongoose = require('mongoose'); 
 const cors = require('cors');
 
+const developers = require('./routes/getDevelopers');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -23,7 +24,10 @@ app.use(function(req, res, next) {
     next();
 });
 
-const DB_CONNECTION = "mongodb://localhost/store"
+
+//const DB_CONNECTION = "mongodb://localhost/store"
+
+const DB_CONNECTION = "mongodb://localhost/Developer-tasks"
 
 mongoose.connect(DB_CONNECTION, {
     useNewUrlParser: true,
@@ -37,6 +41,8 @@ app.use('/login', login);
 app.use('/register', register);
 app.use("/products", product);
 app.use("/cart", cart);
+app.use('/developers', developers);
+
 
 console.log("app loaded in appjs");
 

@@ -13,6 +13,7 @@ import { CopyDirective } from './components/directives/copy.directive';
 import { LoginComponent } from './components/login/login.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
+import { TasksPageComponent } from './components/tasks-page/tasks-page.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AuthInterceptorService } from './interceptors/auth-interceptor.service'
     CurrencyPipe,
     CopyDirective,
     LoginComponent,
-    LoaderComponent
+    LoaderComponent,
+    TasksPageComponent
   ],
   imports: [
     BrowserModule,
