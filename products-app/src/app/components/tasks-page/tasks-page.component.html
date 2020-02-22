@@ -1,15 +1,43 @@
 <h1 class="text-center">TASKS - PAGE</h1>
 
+<div class="container">
+    <form [formGroup]="myForm">
+  <div class="row col-lg-12">
+    <select formControlName="developer_id" class="browser-default custom-select col-lg-3 m-2">
+      <option selected>Select developer</option>
+      <option
+        *ngFor="let developer of developers"
+        value={{developer._id}}
+        >{{ developer.name }}</option
+      >
+    </select>
+  </div>
+  <div class="row col-lg-12 m-2">
+    <input formControlName="task"
+      class="form-control form-control-lg col-lg-4 mr-2"
+      type="text"
+      placeholder="Enter task.."
+    />
+  </div>
+  <div class="row col-lg-12 m-2">
+    <label for="taksDate">Created At: </label>
+    <input formControlName="createdAt"
+      class="form-control form-control-lg col-lg-4 mr-2"
+      id="taksDate"
+      type="date"
+    />
+    <div class="row col-lg-12 m-2">
+        <label> Done? </label>
+        <div class="input-group-text">
+      <input formControlName="done"
+        type="checkbox"
+      />
+      </div>
 
-    <div class="container">
-        <div class="row col-lg-12">
-
-            <select class="browser-default custom-select col-lg-3 mr-2">
-                <option selected>Select developer</option>
-                <option *ngFor="let developer of developers" value={{developer.name}}>{{developer.name}}</option>
-            </select>
-            
-            <input class="form-control form-control-lg col-lg-4 mr-2" type="text" placeholder="Enter task..">
-            <button class="btn btn-primary" type="button">SAVE</button>
-        </div>
     </div>
+    <div class="row col-lg-12 m-2">
+      <button class="btn btn-primary" type="button" (click)="addTask()">SAVE</button>
+    </div>
+  </div>
+  </form>
+</div>

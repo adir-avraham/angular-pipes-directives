@@ -5,15 +5,16 @@ const Task = require('../models/task');
 
 
 router.post("/", async (req, res) => {
-    const { name, task } = req.body;
+    const { developer_id, task, createdAt, done } = req.body;
+    console.log(req.body)
     
-    const Task = new Task({
-      developer: name,
+    t = new Task({
+      developer: developer_id,
       task: task
     });
   
     try {
-      const savedTask = await Task.save();
+      const savedTask = await t.save();
       res.json({savedTask: savedTask, status: true});
     } catch (message) {
       res.json({ error: message, status: false });

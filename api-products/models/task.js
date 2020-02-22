@@ -6,11 +6,6 @@ const TaskSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    developer: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Developer',
-        required: true
-    },
     createdAt: {
         type: Date,
         default: Date.now
@@ -18,7 +13,11 @@ const TaskSchema = new mongoose.Schema({
     done: {
         type: Boolean,
         default: false
-    }
+    },
+    developer: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Developer',
+    required: true                                }
 })
 
 

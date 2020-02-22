@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const developers = require('./routes/getDevelopers');
-
+const addTask = require('./routes/addTask');
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -42,6 +42,7 @@ app.use('/register', register);
 app.use("/products", product);
 app.use("/cart", cart);
 app.use('/developers', developers);
+app.use('/addTask', addTask);
 
 
 console.log("app loaded in appjs");
